@@ -1,4 +1,4 @@
-**該Project為模仿YouTube影片網頁的練習**
+**該Project為模仿YouTube影片網頁的練習**<br/>
 目前只有電腦網頁版，使用google、IE EDGE瀏覽器觀看較佳
 
 ##### 有實作的功能:
