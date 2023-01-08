@@ -1,7 +1,7 @@
 **該Project為模仿YouTube影片網頁的練習**<br/>
 目前只有電腦網頁版，使用google、IE EDGE瀏覽器觀看較佳
-
-##### 有實作的功能:
+## 展示網址: https://voidjkk.github.io/YT-practice-DEMO/cp_YT.html<br/>
+#### 有實作的功能:
 * "每次"網頁往下捲動到接近底部時，會透過ajax抓取"原YouTube影片下方的最新留言"，從最新的開始顯示；第一則留言是作者留言<br/> 
 * 每次進行留言載入時，會短暫出現提示:正在載入中的動畫效果<br/> 
 * 左上角Youtube的logo若滑鼠停留在上面會撥放動畫效果<br/> 
