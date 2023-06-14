@@ -1,0 +1,1264 @@
+/*css reset*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+    height: 100% ;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+/*css reset over*/
+
+
+body,html{
+    height: 100%;
+    scroll-behavior: smooth;
+    
+}
+
+h1{
+    font-size: 20px;
+    font-family: "YouTube Sans","Roboto",sans-serif;
+    line-height: 28px;
+    text-size-adjust: 100%;
+    color:white;
+    word-break: break-word;
+}
+
+div{
+      font-family: Roboto, Arial, sans-serif;
+ }
+a{    
+      text-decoration: none;
+      color: white;
+      font-family: Roboto, Arial, sans-serif;
+ }    
+
+ p{
+    font-family: "Roboto", "Noto", sans-serif;
+    /*防止網頁放大字體位置變形*/
+    text-size-adjust:100%;
+   
+ }
+
+/************重複的樣式設定值************/ 
+$primary_color: #0f0f0f;
+
+@mixin X_arrange_Y_mid(){
+    display: flex;
+    align-items: center;
+}
+
+@mixin function_button($height,$bg_color,$padding_L,$padding_R, $svg_color ){
+    height: $height;
+    background-color: $bg_color;
+    padding-left: $padding_L;
+    padding-right: $padding_R;
+    fill: $svg_color;
+
+    &:hover {
+        background-color: #474645;
+      }
+}
+
+@mixin excess_text_control($limit_line){
+  /*下列3項需一起設定"且對<p>tag才有用" 多行文字省略符號才會生效
+   overflow則是隱藏超過文字 */
+  -webkit-line-clamp: $limit_line;
+  display: -webkit-box;
+  -webkit-box-orient:vertical;
+  overflow: hidden;
+  word-wrap:break-word;  /*依單字換行*/
+  word-break: break-all; /*單一文字過長強制斷行*/
+}
+
+//RWD設定-手機768px以下
+@mixin RWD_phone($max-width){
+  @media(max-width:$max-width){
+      @content; //SCSS專用符號，會導入@include 內的CSS語法
+  }
+}
+
+@mixin RWD_other($other_width){
+    @media(max-width:$other_width){
+        @content;
+    }
+}
+
+.TopBar{
+    @include X_arrange_Y_mid();
+    height: 56px;
+    width:100%;
+    box-sizing: border-box;
+    position:fixed;
+    z-index: 200;
+    background-color: $primary_color ;
+    justify-content:space-between;
+    padding-left: 16px;
+    padding-right: 16px;
+    right: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+
+    @include RWD_phone(768px){
+        padding: 0;
+        justify-content: center;  
+
+      }
+}
+
+
+
+.TopLeftArea{
+  @include X_arrange_Y_mid();
+
+  @include RWD_phone(768px){
+    display: none;
+  }
+}
+
+
+.GuideMenuBtn{
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.Btn_style{
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+
+.Yt_Logo{
+    width: 120px;
+    padding-left: 18px;
+    padding-top: 18px;
+    padding-bottom: 18px;
+    padding-right: 14px;
+    box-sizing: border-box;
+
+
+}
+#yt-icon{
+    fill:transparent;
+    stroke:none; 
+
+}
+
+#yt-text {
+    fill: white;
+    stroke: white;
+    stroke-width: 0.5px;
+  
+    &:hover {
+      stroke-dashoffset: 100;
+      stroke-dasharray: 100;
+      animation: YtTextAnimation linear 1.2s 1;
+      animation-fill-mode: forwards; /* 預設 none，forwards = 停在動畫結尾 */
+    }
+  }
+
+@keyframes YtTextAnimation{
+  0% , 90%{
+    fill:transparent;
+     stroke:white; 
+     stroke-width: 0.5px;
+  }
+  100%{
+    stroke-dashoffset: 0;
+    fill:white;
+}
+}
+
+.Yt_CountryCode{
+    color:rgb(170, 170, 170);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px ;
+    margin-left: -10px;
+    margin-top: -16px;
+    
+}   
+/**************中間搜尋框*************/
+.TopMidArea{
+    @include X_arrange_Y_mid();
+    margin-left: 40px ;
+
+    @include RWD_phone(768px){
+        margin-left: 0 ;
+      }
+}
+
+.SearchBar {
+    @include X_arrange_Y_mid();
+    z-index: 201;
+    box-sizing: border-box;
+    height: 40px;
+    width: 30vw;
+    border: 1px solid rgb(100, 100, 100);
+    border-radius: 40px 0 0 40px;
+    position: relative;
+
+    @include RWD_phone(768px){
+        width:70vw;
+    }
+
+    &:focus-within {
+      box-shadow: 0 0 10px 1px #3ea6ff;
+      transition: 0.3s;
+    }
+
+
+  }
+
+.SearchBarList{
+    position: absolute;
+    top: 38px;
+    left: 43px;
+    background-color:   #31302f ;
+    width: calc(30vw - 44px); 
+    height: auto;
+    max-height: 300px;
+    opacity: 1;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    overflow-y: scroll;
+
+    @include RWD_phone(768px){
+        width: calc(70vw - 44px); 
+    }
+}
+
+
+
+.SearchBarListRow{
+    cursor: pointer;
+    box-sizing: border-box;
+    padding-left: 8px;
+
+    &:hover{
+        background-color:   #474645 ;
+      }
+
+    p {
+      font-size: 14px;
+      padding-left: 8px;
+      padding-right: 12px;
+      line-height: 36px;
+      color:antiquewhite;
+      @include excess_text_control(1);
+    }
+}
+
+
+.L_SearchIcon{
+    height: 20px;
+    display: flex;
+    justify-content:center;
+    padding-left: 12px;
+
+    svg{
+        fill: white;
+    }
+}
+
+
+.R_SearchIcon{
+    @include X_arrange_Y_mid();
+    box-sizing: border-box;
+    justify-content:center;
+    height: 40px;
+    width: 64px;
+    border: 1px solid rgb(100, 100, 100) ;
+    border-radius: 0 40px 40px 0 ;
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    background-color: #222222;
+    cursor:pointer;
+
+    svg{
+        fill: white;
+    }
+
+    &:active{
+        box-shadow : inset 0 0 2px 1px rgb(100, 100, 100);
+        background-color: #141414;
+    }
+}
+
+
+.IconShape{
+flex-shrink:0; /*防止flex-shrink=1自動依剩餘空間縮放*/
+height: 24px;
+width: 24px;
+fill: white;
+    
+}
+
+#search{
+    box-sizing: content-box;
+    height: 24px;
+    display: inline-block;
+    outline: none;
+    background-color: $primary_color;
+    padding: 0;
+    padding-left: 12px;
+    padding-right: 24px;
+    border: 0;
+    font-size: 14px;
+    width: 100%;
+    color:white;
+    position: relative;
+
+/*****搜尋列表的'X'設定*****/
+  /*清除搜尋框預設樣式 for chrome IE safari*/
+    &::-webkit-search-cancel-button{
+      -webkit-appearance: none;
+      appearance: none;
+      display: none;
+    }
+
+  /* :not(:valid)代表排除驗證合格(valid)的部分，就是不合格的設為none
+  ，判斷input和form的內容，因為HTML部分含有required，所以輸入任何字之後變成合格ok
+  */
+    &:not(:valid) ~ .SearchClose_btn,
+    &:not(:valid) ~ .SearchBarList,
+    &:not(:focus-within) ~ .SearchBarList{
+      display: none;
+    }
+}
+
+
+.SearchClose_btn{
+	background-color: transparent;
+	display: inline-block;
+	vertical-align: middle;
+    outline: 0;
+    padding: 0;
+    border: 0;
+
+    &::after{
+        content: "x";
+        position: absolute;
+        z-index:201;
+        top: 0;
+        bottom: 0;
+        right:5px;
+        display: block;
+        width: 20px;
+        height: 20px;
+        background-color: transparent;
+        margin: auto;
+        padding: 2px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 18px;
+        color: white;
+        font-size: 18px;
+        cursor: pointer;
+        }
+        
+    &:hover::after{
+        background-color: gray;
+        
+        }
+}
+
+    
+.Mic_Btn{
+    @include X_arrange_Y_mid();
+    border: 0;
+    padding: 0;
+    margin-left: 4px;
+    width: 40px;
+    height: 40px;
+    justify-content: center; 
+    background-color: #181818;
+    cursor:pointer;
+    border-radius:50%;
+    fill: white;
+
+    &:hover{
+        background-color: #303030;
+    }
+
+    @include RWD_phone(768px){
+        display: none;
+    }
+
+}
+
+/**************頂部右側*************/
+
+.TopRightArea{
+    @include X_arrange_Y_mid();
+    justify-content: flex-end;
+    min-width: 255px;
+
+    @include RWD_phone(768px){
+        display: none;
+    }
+}
+
+.More_Btn_Shape{
+  @include X_arrange_Y_mid();
+  width: 40px;
+  height: 40px;
+  justify-content: center;
+  fill:white;
+}
+
+
+/**************影片區*************/
+.MainContainer{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 56px;
+    left: 0;
+    right: 0;
+    background-color: $primary_color;
+
+    @include RWD_phone(768px){
+        display: block;
+    }
+
+}
+
+
+main{
+    background-color: $primary_color;
+    margin-left: 24px;
+    padding-right: 24px;
+    padding-top: 24px;   
+    width: 90vw;
+    min-width: 360px;
+
+    @include RWD_phone(768px){
+        margin: 0px 0px 0px 12px;
+        padding-right: 12px;
+    }
+
+}
+
+/*利用影片外包一層DIV讓影片依視窗"寬度"縮放
+利用padding使用%時，會抓width值的特性
+padding-bottom 填入比值 4:3就是 3/4 * 100% */
+.VideoBox{
+   position: relative;
+   width: 100%;
+   height: 0;
+   padding-bottom: calc( (720 / 1280) *100%) ; 
+   min-width: 360px; 
+   iframe{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+   }
+}
+
+/**************影片標題區*************/
+
+.TitleContainer{
+    margin-top: 12px;
+}
+
+.TitleTags{
+    line-height: 15px;
+    font-size: 12px;
+    color: rgb(62,166,255) ;
+}
+
+.Watch_Num{
+    line-height: 20px;
+    font-size: 14px;
+    margin-top: 4px;
+    color: white;
+
+    span:first-child{
+      margin-right: 4px;  
+    }
+}
+
+
+/**************影片按鈕區*************/
+.Tool_Area{
+   @include X_arrange_Y_mid();
+   border-bottom: 1px #31302f  solid;
+   margin-top: 12px;
+   padding-bottom: 12px;
+   justify-content: space-between;
+   height: 43px;
+   @include RWD_other(1100px){
+    display: block ;
+    height: auto;
+    flex-shrink:0;
+   }
+}
+
+
+
+.AboutOwner{
+    @include X_arrange_Y_mid();
+    margin-right: 12px;
+    min-width:232px ;
+}
+
+.CircleIconShape{
+    width: 40px;
+    height: 40px;
+    margin-right: 12px;
+    img{
+      border-radius:50% ; 
+    }
+}
+
+
+
+
+.OwnerBox{
+  margin-right: 24px;
+  color:white;
+
+  a{
+    font-size: 16px;
+    line-height: 22px;
+    text-size-adjust: 100%;
+  }
+}
+
+.Small_Text_Style{
+    font-size: 12px;
+    line-height: 18px;
+    color:   rgb(170, 170, 170);
+}
+
+.Single_element_Btn{
+  height: 36px;
+  background-color:   #31302f ;
+  text-align: center;
+
+  &:hover {
+      background-color: #474645;
+  }
+}
+
+.Subscribe_Btn_Shape{
+    width: 60px;
+    background-color: white;
+    font-family: "Roboto", "Noto", sans-serif;
+    font-size: 14px;
+
+    &:hover{
+      background-color: #d9d9d9;
+    }
+}
+
+
+.Common_Btn_Style{
+    border: 0;
+    border-radius: 18px;
+    cursor: pointer;
+    box-sizing: border-box;
+    fill: white;
+
+    p{
+        font-size: 14px;
+        display: inline-block;
+        padding-left: 4px;
+        line-height: 36px;
+    }
+}
+
+.X_Arrange{
+  @include X_arrange_Y_mid();
+}
+
+.Like_Btn{
+  @include function_button( 36px , #31302f , 12px , 16px , white );
+  border-radius: 18px 0 0 18px;
+  p{
+    min-width: 30px;
+  }
+  
+}
+
+.Dislike_Btn{
+    @include function_button( 36px , #31302f , 12px , 16px , white);
+    border-radius:  0 18px 18px 0;
+    position: relative;
+
+    p{
+        min-width: 34px;
+    }
+
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border-left: 1px solid gray ;
+      margin-top: 7px;
+      margin-bottom: 7px;
+  }
+}
+
+.Other_Btn{
+  @include function_button( 36px , #31302f , 12px , 16px , null);
+}
+
+.For_Rate_Bar_Arr{
+    display: block;
+    position: relative;
+
+    @include RWD_other(1100px){
+        margin-top: 12px;
+    }
+}
+.Tool_Area_Btn{
+  @include X_arrange_Y_mid();
+  overflow: hidden;
+
+  @include RWD_other(1100px){
+    overflow-x: scroll ;
+    padding-bottom: 6px;
+  }
+
+}
+
+.Btn_Offset{
+    margin-right: 8px;
+    min-width:84px;
+}
+
+.Rate_Bar_Container{
+    position: absolute;
+    top:46px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #474645 ;
+    width: 130px;
+    text-align: center;
+    height: 2px;
+
+    @include RWD_other(1100px){
+        top:40px;
+       
+      }
+}
+
+.Rate_Bar{ /*運算符號要前後空白隔開*/
+    width: calc( (1235 /  calc(1235 + 165)   ) * 100% ) ;
+    background-color: white;
+    height: 2px;
+
+
+}
+
+.Description{
+    margin-top: 12px;
+    background-color: #31302f ;
+    border-radius: 10px  ;
+    padding: 12px;
+    padding-top: 8px;
+    cursor: pointer;
+    color: white;
+}
+
+.Desc_BgCtrl{
+  background-color: #31302f ;
+
+  &:hover {
+      background-color: #474645;
+  }
+}
+
+.Description_InnerText{
+    line-height: 20px;
+    font-size: 14px; 
+    height: 40px;
+    overflow: hidden;
+
+    a{
+      &:link{
+          color: #3ea6ff ;
+          
+      }
+      &:visited{
+          color: #1b5385 ;
+      }
+    }
+}
+
+.Close_MoreText{
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+    color:white;
+    pointer-events: none;
+    cursor: pointer;
+
+    &:hover{
+        background-color: rgb(32, 32, 32);
+    }
+}
+
+/**************留言區*************/
+
+.Comment_Area{
+margin-top: 24px;
+}
+
+.Comment_Area_Top{
+    @include X_arrange_Y_mid();
+    margin-bottom: 24px;
+}
+
+.All_Comment_Text{
+    margin-right: 32px;
+    color: white;
+    line-height: 22px;
+    font-family: "Roboto", "Noto", sans-serif;
+}
+
+.Comment_Input{
+    box-sizing: border-box;
+    width: 100%; 
+    border: 0;
+    outline: 0;
+    border-bottom: 1px solid rgb(100, 100, 100) ;
+    background-color: $primary_color;
+    color: white;
+
+}
+
+.User_Area_Shape{
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 10px;
+  }
+
+.User_Comment_ID{
+    height: 18px;
+    margin-bottom: 2px;
+
+    a{
+      margin-right: 4px;
+      font-size: 14px;
+      line-height: 18px;  
+    } 
+}
+
+.User_Comment_Content{
+  margin-bottom: 4px;
+  @include excess_text_control(4);
+  font-size: 14px;
+  line-height: 20px;
+  color: white;
+
+  a:link{
+    color: #3ea6ff;
+  } 
+}
+
+.transparent_Btn_Shape{
+    background-color: transparent;
+    fill: white;
+    height: 32px;
+}
+
+.Comment_Offset{
+margin-right: 4px;
+}
+
+.Btn_White{
+  fill: white;
+}
+
+.Response_Btn{
+  background-color: $primary_color;
+  color: white;
+  height: 32px;
+  width: 50px;
+
+  &:hover{
+    background-color:   #474645 ;
+  }
+}
+
+.For_Hover{
+    height: 32px;
+    width: 32px;
+    background-color:   $primary_color ;
+    border-radius: 50% ;
+    position: relative;
+
+    &:hover{
+        background-color:   #474645 ;
+    }
+
+    div{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        /*因為基準點是div圖型左上角 所以要將內容物移回去50%才會剛好置中*/
+        transform: translate(-50%, -50%)
+    }
+}
+
+.D_triangle{
+    margin-top: 5px;
+    border-top: #3ea6ff 5px solid;
+    border-left: transparent 5px solid;
+    border-bottom: transparent 5px solid;
+    border-right: transparent 5px solid;
+    width: 0px;
+    height: 0px;
+}
+
+.Center_Arrange{
+    @include X_arrange_Y_mid();
+    justify-content: center;  
+}
+
+.User_Comment_Reply{
+   /*讓框框自適應文字框度+維持內元素水平排列*/
+   display: inline-flex;
+   background-color: $primary_color;
+   color: #3ea6ff;
+   padding-left:6px ;
+   padding-right: 12px;
+
+   &:hover{
+    background-color:  #263850;
+   }
+}
+
+.User_More_Text{
+    background-color: transparent;
+
+    &::after{
+        content: "顯示完整內容";
+    }
+
+    &:hover{
+        text-decoration-line: underline;
+        cursor: pointer;
+    }
+}
+
+.Loading_Svg{
+    height: 0;
+    width: 0;
+
+    svg{
+        stroke-dashoffset: 62;
+        stroke-dasharray: 9;  /*虛線長度與間隔*/
+        animation: LoadingAnimation linear 1.3s infinite;
+        animation-fill-mode:none; 
+    }
+}
+
+@keyframes LoadingAnimation{
+    0%  { stroke-dashoffset: 62; }
+    100%{ stroke-dashoffset: -10; }
+} 
+
+.Loading_Svg_Show{
+
+    margin: auto;
+    height: 32px;
+    width: 32px;
+}
+
+/**************側邊選單*************/
+
+.GuideMenuList{
+    width: 240px;
+    z-index: 500; 
+    background-color: rgb(32, 32, 32) ;
+    transform:translateX(-240px );
+    color:white;
+    transition: 0.6s ;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.ShowScroll{
+    position: absolute;
+    top: 56px ;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+
+    &:hover{
+      overflow-y: scroll;
+    }
+}
+
+.GuideMenu_Top{
+    height: 56px;
+    padding-left: 16px;
+}
+
+.MainItem{
+    background-color: rgb(32, 32, 32) ;
+    border-bottom: 1px #383838  solid;
+    box-sizing: border-box;
+    padding-top: 12px;
+    padding-bottom: 12px;
+
+    li{
+      padding-left: 24px;
+      padding-right: 24px;
+      height: 40px;
+      line-height: 40px;
+
+      &:hover{
+        background-color: #383838;
+      }
+    }
+}
+
+.MainItemContent{
+    display:flex;
+    align-items: center ;
+
+    svg{
+        margin-right: 24px;
+        height: 24px;
+        fill:white;
+    }
+
+    p{
+        display: block;
+        color:white;
+        font-family: "Roboto", "Noto", sans-serif;
+        font-size: 14px ;
+    }
+}
+
+.OtherItem{
+    border-bottom: 1px #383838  solid;
+    box-sizing: border-box;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-left: 32px;
+    padding-right:32px ;
+    font-size: 14px ;
+    line-height: 20px;
+
+    p{
+      width: 176px;
+      /*防止網頁放大字體位置變形*/
+      text-size-adjust:100%;
+    }
+}
+
+.OtherItemContent{
+    margin-top: 12px;
+    width: 85px;
+    height: 36px;
+}
+
+.Login_btn{
+    @include X_arrange_Y_mid();
+    justify-items: center;
+    box-sizing: border-box;
+    width: 85px;
+    height: 36px;
+    padding-left: 10px;
+    padding-right:15px ;
+    border: 1px rgb(100, 100, 100) solid;
+    font-family: "Roboto", "Noto", sans-serif;
+    font-size: 14px;
+    border-radius: 18px;
+    white-space: nowrap;
+    fill:#3ea6ff;
+
+    &:hover{
+      background-color: #263850;
+      border: 1px #263850 solid ;
+    }
+
+    p{
+      letter-spacing: 0.5px;
+      color: #3ea6ff ;
+    }
+}
+
+.Login_btn_offset{
+    margin-right: 6px;
+    fill:#3ea6ff;
+}
+
+.GuideMenuFooter{
+  padding-top: 16px;
+  padding-left: 24px;
+  padding-right: 24px;
+  line-height: 18px;
+  width: 192px;
+
+  a{
+    font-size: 13px;
+    margin-right: 8px;
+    color:rgb(170, 170, 170); 
+   }
+}
+
+
+.SettingArea{
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.FooterCopyRight{
+    font-size: 12px;
+    padding-bottom: 16px; 
+    color:rgb(170, 170, 170);
+    text-size-adjust:100%;
+}
+
+.related_video_list{
+  background-color: $primary_color;
+  min-width: 30vw;
+  @include RWD_phone(768px){
+    display: flex;
+    align-items: flex-start;
+   
+    margin-top: 10px;
+    padding-top: 12px;
+    overflow-y:hidden;
+    height: 280px;
+    border-top: 1px #31302f solid;
+
+  }
+
+
+}
+
+.related_video_row{
+  margin: 0px 0px 8px 0px;
+  display:flex;
+  @include RWD_phone(768px){
+    display:block;
+  }
+}
+
+.thumbnail_scale{
+    width: 168px;
+    height: 94px;
+    overflow:hidden;
+    margin: 0px 8px 0px 0px;
+    border-radius: 10px;
+
+    @include RWD_phone(768px){
+        width: 268px;
+        height: 150px;
+        object-fit: cover;
+        object-position: center;
+      }
+}
+
+.related_video_thumbnail{
+    width: 168px;
+    height: 94px;
+    transform:scale(1,1);
+    transition: all 0.6s ease-out;
+
+    &:hover{
+        transform:scale(1.3,1.3);
+    }
+    @include RWD_phone(768px){
+        width: 268px;
+        height: 150px;
+        object-fit: cover;
+        object-position: center;
+      }
+
+}
+
+.related_video_info{
+    width: 226px;
+    padding-right: 24px;
+    box-sizing: border-box;
+    @include RWD_phone(768px){
+        margin-top: 4px;
+        width: 268px;
+      }
+}
+
+.related_video_ch{
+    @include excess_text_control(1);
+    font-size: 12px;
+    line-height: 18px;
+    color:   rgb(170, 170, 170);
+}
+
+
+/*****功能區*****/
+
+.Show_AllDesc{
+    height: auto;
+}
+
+/*把原本的content文字覆蓋*/
+.User_More_Text_Tog {
+  &::after {
+    content: "顯示部分資訊";
+  }
+}
+
+.User_All_Comment{
+    display: block;
+    overflow: auto;
+}
+
+.AsideMenuShow{
+   overflow: hidden; 
+
+/*點擊按鈕後在 body 加上 AsideMenuShow 的開關 */
+    .GuideMenuList{
+      transform:translateX(0px) ;
+      -webkit-transform: translateX(0px);
+    }
+
+/*強調側邊選單 用半透明遮罩其他部分*/
+    .Bg_Mask{
+      position:fixed ; 
+      top: 0; 
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 450;
+      background-color:rgba(0, 0, 0, 0.6);
+    }
+}
+
+/*
+track=卷軸框 thumb=拖動的區塊
+若想讓框是透明就不要設定::-webkit-scrollbar-track
+inset設為卷軸內陰影
+
+*/
+
+.ScrollBar{
+    &::-webkit-scrollbar{  
+      width: 10px;
+    }
+    &::-webkit-scrollbar-thumb{   
+      border-radius: 6px;
+      background-color:aquamarine;
+      /*box-sizing放border底部會和邊框重疊，而且卷軸吃不到這個屬性，Firefox3.6以下不支援content-box，*/
+      background-clip: content-box; 
+      border: 2.5px solid transparent;
+    }
+}
+ 
+.rv_loading_spin{
+    margin: 10px auto;
+    border: 3px solid white;
+    border-top: 3px solid white;
+    border-right: 3px solid white;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    animation: rv_spin 2s linear infinite;
+    @include RWD_phone(768px){
+        border: 2px solid $primary_color;
+        border-top: 2px solid white;
+        border-right: 2px solid white;
+        flex-shrink: 0; //防止使用flex時被擠壓寬度
+    }
+
+}
+@keyframes rv_spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+.btn_position{
+    position: relative;
+
+}
+
+.rv_more_Btn{
+    display: none;
+
+    @include RWD_phone(768px){
+      position: absolute ;
+      z-index: 201;
+      top: 30% ;
+      right:  0 ;
+      display: block;
+      @include function_button(30px , null , null , null , null);
+      width:30px;
+      background-image: linear-gradient(to right,  rgba(49, 48, 47 , 0.7) , rgba(49, 48, 47 , 1),);   
+      border-radius: 50%;
+      @include  X_arrange_Y_mid();
+
+      cursor: pointer;
+      p{
+        font-size: 14px;  
+        line-height: 14px;
+        color:white;
+        margin: auto;
+      }
+  }
+
+}

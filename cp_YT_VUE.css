@@ -1,0 +1,1401 @@
+@charset "UTF-8";
+/*css reset*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+  height: 100%;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*css reset over*/
+body, html {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+h1 {
+  font-size: 20px;
+  font-family: "YouTube Sans", "Roboto", sans-serif;
+  line-height: 28px;
+  -webkit-text-size-adjust: 100%;
+     -moz-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+          text-size-adjust: 100%;
+  color: white;
+  word-break: break-word;
+}
+
+div {
+  font-family: Roboto, Arial, sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  font-family: Roboto, Arial, sans-serif;
+}
+
+p {
+  font-family: "Roboto", "Noto", sans-serif;
+  /*防止網頁放大字體位置變形*/
+  -webkit-text-size-adjust: 100%;
+     -moz-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+          text-size-adjust: 100%;
+}
+
+/************重複的樣式設定值************/
+.TopBar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 56px;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: fixed;
+  z-index: 200;
+  background-color: #0f0f0f;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding-left: 16px;
+  padding-right: 16px;
+  right: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+@media (max-width: 768px) {
+  .TopBar {
+    padding: 0;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+.TopLeftArea {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+@media (max-width: 768px) {
+  .TopLeftArea {
+    display: none;
+  }
+}
+
+.GuideMenuBtn {
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.Btn_style {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.Yt_Logo {
+  width: 120px;
+  padding-left: 18px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  padding-right: 14px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#yt-icon {
+  fill: transparent;
+  stroke: none;
+}
+
+#yt-text {
+  fill: white;
+  stroke: white;
+  stroke-width: 0.5px;
+}
+#yt-text:hover {
+  stroke-dashoffset: 100;
+  stroke-dasharray: 100;
+  -webkit-animation: YtTextAnimation linear 1.2s 1;
+          animation: YtTextAnimation linear 1.2s 1;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards; /* 預設 none，forwards = 停在動畫結尾 */
+}
+
+@-webkit-keyframes YtTextAnimation {
+  0%, 90% {
+    fill: transparent;
+    stroke: white;
+    stroke-width: 0.5px;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    fill: white;
+  }
+}
+
+@keyframes YtTextAnimation {
+  0%, 90% {
+    fill: transparent;
+    stroke: white;
+    stroke-width: 0.5px;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    fill: white;
+  }
+}
+.Yt_CountryCode {
+  color: rgb(170, 170, 170);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  margin-left: -10px;
+  margin-top: -16px;
+}
+
+/**************中間搜尋框*************/
+.TopMidArea {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 40px;
+}
+@media (max-width: 768px) {
+  .TopMidArea {
+    margin-left: 0;
+  }
+}
+
+.SearchBar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 201;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: 40px;
+  width: 30vw;
+  border: 1px solid rgb(100, 100, 100);
+  border-radius: 40px 0 0 40px;
+  position: relative;
+}
+@media (max-width: 768px) {
+  .SearchBar {
+    width: 70vw;
+  }
+}
+.SearchBar:focus-within {
+  -webkit-box-shadow: 0 0 10px 1px #3ea6ff;
+          box-shadow: 0 0 10px 1px #3ea6ff;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.SearchBarList {
+  position: absolute;
+  top: 38px;
+  left: 43px;
+  background-color: #31302f;
+  width: calc(30vw - 44px);
+  height: auto;
+  max-height: 300px;
+  opacity: 1;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  overflow-y: scroll;
+}
+@media (max-width: 768px) {
+  .SearchBarList {
+    width: calc(70vw - 44px);
+  }
+}
+
+.SearchBarListRow {
+  cursor: pointer;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding-left: 8px;
+}
+.SearchBarListRow:hover {
+  background-color: #474645;
+}
+.SearchBarListRow p {
+  font-size: 14px;
+  padding-left: 8px;
+  padding-right: 12px;
+  line-height: 36px;
+  color: antiquewhite;
+  /*下列3項需一起設定"且對<p>tag才有用" 多行文字省略符號才會生效
+   overflow則是隱藏超過文字 */
+  -webkit-line-clamp: 1;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-wrap: break-word; /*依單字換行*/
+  word-break: break-all; /*單一文字過長強制斷行*/
+}
+
+.L_SearchIcon {
+  height: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-left: 12px;
+}
+.L_SearchIcon svg {
+  fill: white;
+}
+
+.R_SearchIcon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 40px;
+  width: 64px;
+  border: 1px solid rgb(100, 100, 100);
+  border-radius: 0 40px 40px 0;
+  padding-left: 6px;
+  padding-right: 6px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  background-color: #222222;
+  cursor: pointer;
+}
+.R_SearchIcon svg {
+  fill: white;
+}
+.R_SearchIcon:active {
+  -webkit-box-shadow: inset 0 0 2px 1px rgb(100, 100, 100);
+          box-shadow: inset 0 0 2px 1px rgb(100, 100, 100);
+  background-color: #141414;
+}
+
+.IconShape {
+  -ms-flex-negative: 0;
+      flex-shrink: 0; /*防止flex-shrink=1自動依剩餘空間縮放*/
+  height: 24px;
+  width: 24px;
+  fill: white;
+}
+
+#search {
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  height: 24px;
+  display: inline-block;
+  outline: none;
+  background-color: #0f0f0f;
+  padding: 0;
+  padding-left: 12px;
+  padding-right: 24px;
+  border: 0;
+  font-size: 14px;
+  width: 100%;
+  color: white;
+  position: relative;
+  /*****搜尋列表的'X'設定*****/
+  /*清除搜尋框預設樣式 for chrome IE safari*/
+  /* :not(:valid)代表排除驗證合格(valid)的部分，就是不合格的設為none
+  ，判斷input和form的內容，因為HTML部分含有required，所以輸入任何字之後變成合格ok
+  */
+}
+#search::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+  display: none;
+}
+#search:not(:valid) ~ .SearchClose_btn, #search:not(:valid) ~ .SearchBarList, #search:not(:focus-within) ~ .SearchBarList {
+  display: none;
+}
+
+.SearchClose_btn {
+  background-color: transparent;
+  display: inline-block;
+  vertical-align: middle;
+  outline: 0;
+  padding: 0;
+  border: 0;
+}
+.SearchClose_btn::after {
+  content: "x";
+  position: absolute;
+  z-index: 201;
+  top: 0;
+  bottom: 0;
+  right: 5px;
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  margin: auto;
+  padding: 2px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 18px;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+.SearchClose_btn:hover::after {
+  background-color: gray;
+}
+
+.Mic_Btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 0;
+  padding: 0;
+  margin-left: 4px;
+  width: 40px;
+  height: 40px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #181818;
+  cursor: pointer;
+  border-radius: 50%;
+  fill: white;
+}
+.Mic_Btn:hover {
+  background-color: #303030;
+}
+@media (max-width: 768px) {
+  .Mic_Btn {
+    display: none;
+  }
+}
+
+/**************頂部右側*************/
+.TopRightArea {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  min-width: 255px;
+}
+@media (max-width: 768px) {
+  .TopRightArea {
+    display: none;
+  }
+}
+
+.More_Btn_Shape {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 40px;
+  height: 40px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  fill: white;
+}
+
+/**************影片區*************/
+.MainContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+  top: 56px;
+  left: 0;
+  right: 0;
+  background-color: #0f0f0f;
+}
+@media (max-width: 768px) {
+  .MainContainer {
+    display: block;
+  }
+}
+
+main {
+  background-color: #0f0f0f;
+  margin-left: 24px;
+  padding-right: 24px;
+  padding-top: 24px;
+  width: 90vw;
+  min-width: 360px;
+}
+@media (max-width: 768px) {
+  main {
+    margin: 0px 0px 0px 12px;
+    padding-right: 12px;
+  }
+}
+
+/*利用影片外包一層DIV讓影片依視窗"寬度"縮放
+利用padding使用%時，會抓width值的特性
+padding-bottom 填入比值 4:3就是 3/4 * 100% */
+.VideoBox {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+  min-width: 360px;
+}
+.VideoBox iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/**************影片標題區*************/
+.TitleContainer {
+  margin-top: 12px;
+}
+
+.TitleTags {
+  line-height: 15px;
+  font-size: 12px;
+  color: rgb(62, 166, 255);
+}
+
+.Watch_Num {
+  line-height: 20px;
+  font-size: 14px;
+  margin-top: 4px;
+  color: white;
+}
+.Watch_Num span:first-child {
+  margin-right: 4px;
+}
+
+/**************影片按鈕區*************/
+.Tool_Area {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 1px #31302f solid;
+  margin-top: 12px;
+  padding-bottom: 12px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 43px;
+}
+@media (max-width: 1100px) {
+  .Tool_Area {
+    display: block;
+    height: auto;
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+  }
+}
+
+.AboutOwner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 12px;
+  min-width: 232px;
+}
+
+.CircleIconShape {
+  width: 40px;
+  height: 40px;
+  margin-right: 12px;
+}
+.CircleIconShape img {
+  border-radius: 50%;
+}
+
+.OwnerBox {
+  margin-right: 24px;
+  color: white;
+}
+.OwnerBox a {
+  font-size: 16px;
+  line-height: 22px;
+  -webkit-text-size-adjust: 100%;
+     -moz-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+          text-size-adjust: 100%;
+}
+
+.Small_Text_Style {
+  font-size: 12px;
+  line-height: 18px;
+  color: rgb(170, 170, 170);
+}
+
+.Single_element_Btn {
+  height: 36px;
+  background-color: #31302f;
+  text-align: center;
+}
+.Single_element_Btn:hover {
+  background-color: #474645;
+}
+
+.Subscribe_Btn_Shape {
+  width: 60px;
+  background-color: white;
+  font-family: "Roboto", "Noto", sans-serif;
+  font-size: 14px;
+}
+.Subscribe_Btn_Shape:hover {
+  background-color: #d9d9d9;
+}
+
+.Common_Btn_Style {
+  border: 0;
+  border-radius: 18px;
+  cursor: pointer;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  fill: white;
+}
+.Common_Btn_Style p {
+  font-size: 14px;
+  display: inline-block;
+  padding-left: 4px;
+  line-height: 36px;
+}
+
+.X_Arrange {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.Like_Btn {
+  height: 36px;
+  background-color: #31302f;
+  padding-left: 12px;
+  padding-right: 16px;
+  fill: white;
+  border-radius: 18px 0 0 18px;
+}
+.Like_Btn:hover {
+  background-color: #474645;
+}
+.Like_Btn p {
+  min-width: 30px;
+}
+
+.Dislike_Btn {
+  height: 36px;
+  background-color: #31302f;
+  padding-left: 12px;
+  padding-right: 16px;
+  fill: white;
+  border-radius: 0 18px 18px 0;
+  position: relative;
+}
+.Dislike_Btn:hover {
+  background-color: #474645;
+}
+.Dislike_Btn p {
+  min-width: 34px;
+}
+.Dislike_Btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-left: 1px solid gray;
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+
+.Other_Btn {
+  height: 36px;
+  background-color: #31302f;
+  padding-left: 12px;
+  padding-right: 16px;
+}
+.Other_Btn:hover {
+  background-color: #474645;
+}
+
+.For_Rate_Bar_Arr {
+  display: block;
+  position: relative;
+}
+@media (max-width: 1100px) {
+  .For_Rate_Bar_Arr {
+    margin-top: 12px;
+  }
+}
+
+.Tool_Area_Btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: hidden;
+}
+@media (max-width: 1100px) {
+  .Tool_Area_Btn {
+    overflow-x: scroll;
+    padding-bottom: 6px;
+  }
+}
+
+.Btn_Offset {
+  margin-right: 8px;
+  min-width: 84px;
+}
+
+.Rate_Bar_Container {
+  position: absolute;
+  top: 46px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #474645;
+  width: 130px;
+  text-align: center;
+  height: 2px;
+}
+@media (max-width: 1100px) {
+  .Rate_Bar_Container {
+    top: 40px;
+  }
+}
+
+.Rate_Bar { /*運算符號要前後空白隔開*/
+  width: 88.2142857143%;
+  background-color: white;
+  height: 2px;
+}
+
+.Description {
+  margin-top: 12px;
+  background-color: #31302f;
+  border-radius: 10px;
+  padding: 12px;
+  padding-top: 8px;
+  cursor: pointer;
+  color: white;
+}
+
+.Desc_BgCtrl {
+  background-color: #31302f;
+}
+.Desc_BgCtrl:hover {
+  background-color: #474645;
+}
+
+.Description_InnerText {
+  line-height: 20px;
+  font-size: 14px;
+  height: 40px;
+  overflow: hidden;
+}
+.Description_InnerText a:link {
+  color: #3ea6ff;
+}
+.Description_InnerText a:visited {
+  color: #1b5385;
+}
+
+.Close_MoreText {
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  color: white;
+  pointer-events: none;
+  cursor: pointer;
+}
+.Close_MoreText:hover {
+  background-color: rgb(32, 32, 32);
+}
+
+/**************留言區*************/
+.Comment_Area {
+  margin-top: 24px;
+}
+
+.Comment_Area_Top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 24px;
+}
+
+.All_Comment_Text {
+  margin-right: 32px;
+  color: white;
+  line-height: 22px;
+  font-family: "Roboto", "Noto", sans-serif;
+}
+
+.Comment_Input {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  border: 0;
+  outline: 0;
+  border-bottom: 1px solid rgb(100, 100, 100);
+  background-color: #0f0f0f;
+  color: white;
+}
+
+.User_Area_Shape {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.User_Comment_ID {
+  height: 18px;
+  margin-bottom: 2px;
+}
+.User_Comment_ID a {
+  margin-right: 4px;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.User_Comment_Content {
+  margin-bottom: 4px;
+  /*下列3項需一起設定"且對<p>tag才有用" 多行文字省略符號才會生效
+   overflow則是隱藏超過文字 */
+  -webkit-line-clamp: 4;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-wrap: break-word; /*依單字換行*/
+  word-break: break-all; /*單一文字過長強制斷行*/
+  font-size: 14px;
+  line-height: 20px;
+  color: white;
+}
+.User_Comment_Content a:link {
+  color: #3ea6ff;
+}
+
+.transparent_Btn_Shape {
+  background-color: transparent;
+  fill: white;
+  height: 32px;
+}
+
+.Comment_Offset {
+  margin-right: 4px;
+}
+
+.Btn_White {
+  fill: white;
+}
+
+.Response_Btn {
+  background-color: #0f0f0f;
+  color: white;
+  height: 32px;
+  width: 50px;
+}
+.Response_Btn:hover {
+  background-color: #474645;
+}
+
+.For_Hover {
+  height: 32px;
+  width: 32px;
+  background-color: #0f0f0f;
+  border-radius: 50%;
+  position: relative;
+}
+.For_Hover:hover {
+  background-color: #474645;
+}
+.For_Hover div {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  /*因為基準點是div圖型左上角 所以要將內容物移回去50%才會剛好置中*/
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.D_triangle {
+  margin-top: 5px;
+  border-top: #3ea6ff 5px solid;
+  border-left: transparent 5px solid;
+  border-bottom: transparent 5px solid;
+  border-right: transparent 5px solid;
+  width: 0px;
+  height: 0px;
+}
+
+.Center_Arrange {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.User_Comment_Reply {
+  /*讓框框自適應文字框度+維持內元素水平排列*/
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  background-color: #0f0f0f;
+  color: #3ea6ff;
+  padding-left: 6px;
+  padding-right: 12px;
+}
+.User_Comment_Reply:hover {
+  background-color: #263850;
+}
+
+.User_More_Text {
+  background-color: transparent;
+}
+.User_More_Text::after {
+  content: "顯示完整內容";
+}
+.User_More_Text:hover {
+  text-decoration-line: underline;
+  cursor: pointer;
+}
+
+.Loading_Svg {
+  height: 0;
+  width: 0;
+}
+.Loading_Svg svg {
+  stroke-dashoffset: 62;
+  stroke-dasharray: 9; /*虛線長度與間隔*/
+  -webkit-animation: LoadingAnimation linear 1.3s infinite;
+          animation: LoadingAnimation linear 1.3s infinite;
+  -webkit-animation-fill-mode: none;
+          animation-fill-mode: none;
+}
+
+@-webkit-keyframes LoadingAnimation {
+  0% {
+    stroke-dashoffset: 62;
+  }
+  100% {
+    stroke-dashoffset: -10;
+  }
+}
+
+@keyframes LoadingAnimation {
+  0% {
+    stroke-dashoffset: 62;
+  }
+  100% {
+    stroke-dashoffset: -10;
+  }
+}
+.Loading_Svg_Show {
+  margin: auto;
+  height: 32px;
+  width: 32px;
+}
+
+/**************側邊選單*************/
+.GuideMenuList {
+  width: 240px;
+  z-index: 500;
+  background-color: rgb(32, 32, 32);
+  -webkit-transform: translateX(-240px);
+          transform: translateX(-240px);
+  color: white;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.ShowScroll {
+  position: absolute;
+  top: 56px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+.ShowScroll:hover {
+  overflow-y: scroll;
+}
+
+.GuideMenu_Top {
+  height: 56px;
+  padding-left: 16px;
+}
+
+.MainItem {
+  background-color: rgb(32, 32, 32);
+  border-bottom: 1px #383838 solid;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+.MainItem li {
+  padding-left: 24px;
+  padding-right: 24px;
+  height: 40px;
+  line-height: 40px;
+}
+.MainItem li:hover {
+  background-color: #383838;
+}
+
+.MainItemContent {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.MainItemContent svg {
+  margin-right: 24px;
+  height: 24px;
+  fill: white;
+}
+.MainItemContent p {
+  display: block;
+  color: white;
+  font-family: "Roboto", "Noto", sans-serif;
+  font-size: 14px;
+}
+
+.OtherItem {
+  border-bottom: 1px #383838 solid;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 32px;
+  padding-right: 32px;
+  font-size: 14px;
+  line-height: 20px;
+}
+.OtherItem p {
+  width: 176px;
+  /*防止網頁放大字體位置變形*/
+  -webkit-text-size-adjust: 100%;
+     -moz-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+          text-size-adjust: 100%;
+}
+
+.OtherItemContent {
+  margin-top: 12px;
+  width: 85px;
+  height: 36px;
+}
+
+.Login_btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 85px;
+  height: 36px;
+  padding-left: 10px;
+  padding-right: 15px;
+  border: 1px rgb(100, 100, 100) solid;
+  font-family: "Roboto", "Noto", sans-serif;
+  font-size: 14px;
+  border-radius: 18px;
+  white-space: nowrap;
+  fill: #3ea6ff;
+}
+.Login_btn:hover {
+  background-color: #263850;
+  border: 1px #263850 solid;
+}
+.Login_btn p {
+  letter-spacing: 0.5px;
+  color: #3ea6ff;
+}
+
+.Login_btn_offset {
+  margin-right: 6px;
+  fill: #3ea6ff;
+}
+
+.GuideMenuFooter {
+  padding-top: 16px;
+  padding-left: 24px;
+  padding-right: 24px;
+  line-height: 18px;
+  width: 192px;
+}
+.GuideMenuFooter a {
+  font-size: 13px;
+  margin-right: 8px;
+  color: rgb(170, 170, 170);
+}
+
+.SettingArea {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.FooterCopyRight {
+  font-size: 12px;
+  padding-bottom: 16px;
+  color: rgb(170, 170, 170);
+  -webkit-text-size-adjust: 100%;
+     -moz-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+          text-size-adjust: 100%;
+}
+
+.related_video_list {
+  background-color: #0f0f0f;
+  min-width: 30vw;
+}
+@media (max-width: 768px) {
+  .related_video_list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    margin-top: 10px;
+    padding-top: 12px;
+    overflow-y: hidden;
+    height: 280px;
+    border-top: 1px #31302f solid;
+  }
+}
+
+.related_video_row {
+  margin: 0px 0px 8px 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+@media (max-width: 768px) {
+  .related_video_row {
+    display: block;
+  }
+}
+
+.thumbnail_scale {
+  width: 168px;
+  height: 94px;
+  overflow: hidden;
+  margin: 0px 8px 0px 0px;
+  border-radius: 10px;
+}
+@media (max-width: 768px) {
+  .thumbnail_scale {
+    width: 268px;
+    height: 150px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: center;
+       object-position: center;
+  }
+}
+
+.related_video_thumbnail {
+  width: 168px;
+  height: 94px;
+  -webkit-transform: scale(1, 1);
+          transform: scale(1, 1);
+  -webkit-transition: all 0.6s ease-out;
+  transition: all 0.6s ease-out;
+}
+.related_video_thumbnail:hover {
+  -webkit-transform: scale(1.3, 1.3);
+          transform: scale(1.3, 1.3);
+}
+@media (max-width: 768px) {
+  .related_video_thumbnail {
+    width: 268px;
+    height: 150px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: center;
+       object-position: center;
+  }
+}
+
+.related_video_info {
+  width: 226px;
+  padding-right: 24px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+@media (max-width: 768px) {
+  .related_video_info {
+    margin-top: 4px;
+    width: 268px;
+  }
+}
+
+.related_video_ch {
+  /*下列3項需一起設定"且對<p>tag才有用" 多行文字省略符號才會生效
+   overflow則是隱藏超過文字 */
+  -webkit-line-clamp: 1;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-wrap: break-word; /*依單字換行*/
+  word-break: break-all; /*單一文字過長強制斷行*/
+  font-size: 12px;
+  line-height: 18px;
+  color: rgb(170, 170, 170);
+}
+
+/*****功能區*****/
+.Show_AllDesc {
+  height: auto;
+}
+
+/*把原本的content文字覆蓋*/
+.User_More_Text_Tog::after {
+  content: "顯示部分資訊";
+}
+
+.User_All_Comment {
+  display: block;
+  overflow: auto;
+}
+
+.AsideMenuShow {
+  overflow: hidden;
+  /*點擊按鈕後在 body 加上 AsideMenuShow 的開關 */
+  /*強調側邊選單 用半透明遮罩其他部分*/
+}
+.AsideMenuShow .GuideMenuList {
+  transform: translateX(0px);
+  -webkit-transform: translateX(0px);
+}
+.AsideMenuShow .Bg_Mask {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 450;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+/*
+track=卷軸框 thumb=拖動的區塊
+若想讓框是透明就不要設定::-webkit-scrollbar-track
+inset設為卷軸內陰影
+
+*/
+.ScrollBar::-webkit-scrollbar {
+  width: 10px;
+}
+.ScrollBar::-webkit-scrollbar-thumb {
+  border-radius: 6px;
+  background-color: aquamarine;
+  /*box-sizing放border底部會和邊框重疊，而且卷軸吃不到這個屬性，Firefox3.6以下不支援content-box，*/
+  background-clip: content-box;
+  border: 2.5px solid transparent;
+}
+
+.rv_loading_spin {
+  margin: 10px auto;
+  border: 3px solid white;
+  border-top: 3px solid white;
+  border-right: 3px solid white;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  -webkit-animation: rv_spin 2s linear infinite;
+          animation: rv_spin 2s linear infinite;
+}
+@media (max-width: 768px) {
+  .rv_loading_spin {
+    border: 2px solid #0f0f0f;
+    border-top: 2px solid white;
+    border-right: 2px solid white;
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+  }
+}
+
+@-webkit-keyframes rv_spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes rv_spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+.btn_position {
+  position: relative;
+}
+
+.rv_more_Btn {
+  display: none;
+}
+@media (max-width: 768px) {
+  .rv_more_Btn {
+    position: absolute;
+    z-index: 201;
+    top: 30%;
+    right: 0;
+    display: block;
+    height: 30px;
+    width: 30px;
+    background-image: -webkit-gradient(linear, left top, right top, from(rgba(49, 48, 47, 0.7)), to(rgb(49, 48, 47)));
+    background-image: linear-gradient(to right, rgba(49, 48, 47, 0.7), rgb(49, 48, 47));
+    border-radius: 50%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    cursor: pointer;
+  }
+  .rv_more_Btn:hover {
+    background-color: #474645;
+  }
+  .rv_more_Btn p {
+    font-size: 14px;
+    line-height: 14px;
+    color: white;
+    margin: auto;
+  }
+}

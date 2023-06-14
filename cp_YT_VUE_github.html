@@ -1,18 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
  <head>
-   <link rel="stylesheet" href="cp_YT.css">
+    <link rel="stylesheet" href="cp_YT_VUE.css">
     <meta charset="UTF-8">
+    <!--RWD語法-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouTube</title>
+    <title>Video Site</title>
 
+    <!-- 載入VUE相關 --> 
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!--載入axios，抓api用-->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!--載入vueuse函式庫-->
+    <script src="https://unpkg.com/@vueuse/shared"></script>
+    <script src="https://unpkg.com/@vueuse/core"></script>
     <script src="jquery-3.5.1.js"></script>
-    <script src="yt-btn.js"></script>
+    <script  src="yt-btn_VUE.js" defer ></script>    
+   </head>
 
- </head>
- 
 <body>
-<div class="Bg_Mask"  ></div>
+<div id="app" >
+   <div class="Bg_Mask"  ></div>
 
    <aside   class="GuideMenuList">
 
@@ -48,18 +56,16 @@
             <div class="Yt_CountryCode">TW</div>
          
     </div>
-    <div  id="EditedScrollBar" class="ShowScroll"  >
+    <div   class="ScrollBar ShowScroll"  >
 
       <ul  class="MainItem">
          <li>
             <a  href="#" >
-
                <div class="MainItemContent">
                   <svg viewBox="0 0 24 24">
                      <path d="M12,4.33l7,6.12V20H15V14H9v6H5V10.45l7-6.12M12,3,4,10V21h6V15h4v6h6V10L12,3Z">
                   </svg>
                   <p>首頁</p>
-           
                </div>
      
             </a>
@@ -208,7 +214,7 @@
       <a  href="#"  >測試新功能</a>
       </div>
       <div class="GuideMenuFooter , FooterCopyRight">
-      <p>© 2022 Google LLC</p>
+      <p>© 2023 Google LLC</p>
       
       </div>
          <div> <br><br><br><br><br><br><br><br><br><br>
@@ -218,14 +224,7 @@
 </aside>
 
 
-
-
 <header class="TopBar"> 
-
-
-
-
-
 
  <div class="TopLeftArea">
    <div class="GuideMenuBtn">
@@ -255,33 +254,13 @@
          </svg>
       </a>
 
-      
    </div>
    <div class="Yt_CountryCode">TW</div>
 
    </div>
 
-
-   <div class="TopMidArea" style="margin-left: 40px ; " >
-      <div class="TopMidArea">
-         <form action="#" class="SearchBar">
-            <div class="L_SearchIcon">
-               <svg viewBox="0 0 24 24" >
-                  <path d="M20.87,20.17l-5.59-5.59C16.35,13.35,17,11.75,17,10c0-3.87-3.13-7-7-7s-7,3.13-7,7s3.13,7,7,7c1.75,0,3.35-0.65,4.58-1.71 l5.59,5.59L20.87,20.17z M10,16c-3.31,0-6-2.69-6-6s2.69-6,6-6s6,2.69,6,6S13.31,16,10,16z"></path>
-               </svg>
-            </div>
-             <!-- autocomplete="off" 搜尋欄不存紀錄 | required 需要輸入值才可送出 -->
-            <input type="search" required id='search' autocomplete="off" placeholder="搜尋" />
-            <button class="SearchClose_btn" type="reset"></button>
-         </form>
-         <button class="R_SearchIcon">
-            <div class="IconShape">
-               <svg viewBox="0 0 24 24" >
-                <path d="M20.87,20.17l-5.59-5.59C16.35,13.35,17,11.75,17,10c0-3.87-3.13-7-7-7s-7,3.13-7,7s3.13,7,7,7c1.75,0,3.35-0.65,4.58-1.71 l5.59,5.59L20.87,20.17z M10,16c-3.31,0-6-2.69-6-6s2.69-6,6-6s6,2.69,6,6S13.31,16,10,16z"></path>
-               </svg>
-            </div>
-         </button>
-      </div>
+   <div class="TopMidArea" >
+      <search_bar></search_bar>
       <button class="Mic_Btn" title="語音">
          <div style="height: 24px; width: 24px;">
             <svg viewBox="0 0 24 24" >
@@ -291,9 +270,7 @@
       </button>
    </div>
 
-
    <div class="TopRightArea">
-
             <a class="DelUnderLine " href="#" >
                 <div class="More_Btn_Shape">
                    <div class="IconShape ">
@@ -303,13 +280,7 @@
                    </div>
                 </div>
             </a>
-         <div class="more_btn的下拉選單施工中"></div>
-
-
-
-
-
-           <a  href="#" >
+            <a  href="#" >
                <div class="Login_btn">
                   <div class="IconShape Login_btn_offset">
                      <svg viewBox="0 0 24 24">
@@ -318,19 +289,11 @@
                   </div>
                   <p>登入</p>
                </div>
-           </a>
-
-
-
-
-
+            </a>
    </div>
-
-
-
 </header>
 
- <!--高273 影片到xx留言-->
+
 <div class="MainContainer">
    <main>
       <div class="VideoBox" >
@@ -340,10 +303,6 @@
       <div class="TitleContainer" >
          <div class="TitleTags">#amogus #amongus #amongusmeme</div>
          <h1>Among Us Drip Theme Song Original (Among Us Trap Remix / Amogus Meme Music)</h1>
-         <div class="Watch_Num">
-            <span>觀看次數：3409萬次</span>
-            <span>2 年前</span>
-         </div>
       </div>
 
       <div class="Tool_Area">
@@ -355,18 +314,16 @@
                </div>
             </a>
 
-     
             <div class="OwnerBox"   >
                <a  href="#"><p>Leonz</p></a>
                <p class="Small_Text_Style">11.3萬 位訂閱者</p>
             </div> 
                <!--另一種建立按鈕連結的方式-->
             <button class="Common_Btn_Style Single_element_Btn Subscribe_Btn_Shape " onclick="window.location.href='https://www.youtube.com/' ">訂閱</button>
-
             </div>
    
          <div class="For_Rate_Bar_Arr">
-            <div  class="X_Arrange">
+            <div  class="Tool_Area_Btn ScrollBar">
 
             <a href="#" >
                 <div class="X_Arrange Common_Btn_Style Like_Btn ">
@@ -388,7 +345,6 @@
                   <p>1.7萬</p>
                </div>
             </a>
-
 
             <a class="Btn_Offset"  href="#" >
              <div class="X_Arrange Common_Btn_Style Other_Btn">
@@ -427,16 +383,15 @@
          </div>
       </div>
 
-
 <div class="Description Desc_BgCtrl">
-   <div >
+   <div  >
          <div class="Watch_Num">
-            <span>觀看次數：1.8萬次</span>
-            <span>1天前</span>
+            <span>觀看次數：3612萬次</span>
+            <span> 2 年前</span>
          </div>
 
          <div class="Description_InnerText">so I took the sound effect / music it plays in the game Among Us when you report a body, extended it, made it into a melody, and then built a trap beat around it. 
-<br>   
+            <br>   
             among drip song 2: <a href="#1">https://www.youtube.com/watch?v=EJ_T_lno9TI</a><br>
             among drip song 3: <a href="#1">https://www.youtube.com/watch?v=gU39w8s54_Q</a><br>
             among drip song 4: <a href="#1">https://www.youtube.com/watch?v=DHjSxRKJftM</a><br>
@@ -453,13 +408,12 @@
          </div>
          <button  class="Close_MoreText ">...更多內容</button>
    </div>
-
 </div>
 
-
+<div  ref="Comment_Area_Flag"></div>
 <div class="Comment_Area">
    <div class="Comment_Area_Top">
-     <div class="All_Comment_Text">60,985 則留言</div>   
+     <div class="All_Comment_Text">61,419 則留言</div>   
      <a  href="#" >
       <div class="X_Arrange Common_Btn_Style">
          <div class=" IconShape Btn_White">
@@ -467,7 +421,7 @@
                <path d="M21,6H3V5h18V6z M15,11H3v1h12V11z M9,17H3v1h6V17z">
             </svg>
          </div>
-         <p>排序依據</p>
+         <p>時間排序</p>
       </div>
      </a>
    </div>
@@ -480,71 +434,6 @@
       <input type="text"  class="Comment_Input" placeholder="發表留言..." >
    </div>
 
-
-
-<!--已留言區域 1則留言
- <div class="User_Area_Shape">
-   <div class="CircleIconShape" >
-      <a href="#">
-         <img style="width: 40px;" src="https://yt3.ggpht.com/ytc/AMLnZu_nModHALY-pYTK0H8hsQwFlR7vRL_Hqvf0dnGd=s48-c-k-c0x00ffffff-no-rj" alt="留言者頭像">
-      </a>
-   </div>
-
-   <div class="Main_Comment_Area" >
-
-      <div class="User_Comment_ID">
-           <a href="#"  >ui p</a>
-           <span class="Small_Text_Style">3 個月前</span>
-      </div>
-      <div  class="User_Comment_Content">
-         <p> 1line<br>2line<br>3line<br>4line<br>5line<br>
-            6line<br>77line<br>88line<br>99line<br>  </p>
-      </div>
-      !--按鈕文字寫在::after--
-      <button  class="Small_Text_Style Common_Btn_Style User_More_Text"></button>
-
-
-
-      <div class="X_Arrange" >
-         <a class="For_Hover" href="#" >
-            <div class="IconShape Btn_White" >
-               <svg viewBox="0 0 24 24">
-                  <path d="M18.77,11h-4.23l1.52-4.94C16.38,5.03,15.54,4,14.38,4c-0.58,0-1.14,0.24-1.52,0.65L7,11H3v10h4h1h9.43 c1.06,0,1.98-0.67,2.19-1.61l1.34-6C21.23,12.15,20.18,11,18.77,11z M7,20H4v-8h3V20z M19.98,13.17l-1.34,6 C18.54,19.65,18.03,20,17.43,20H8v-8.61l5.6-6.06C13.79,5.12,14.08,5,14.38,5c0.26,0,0.5,0.11,0.63,0.3 c0.07,0.1,0.15,0.26,0.09,0.47l-1.52,4.94L13.18,12h1.35h4.23c0.41,0,0.8,0.17,1.03,0.46C19.92,12.61,20.05,12.86,19.98,13.17z">
-               </svg>
-            </div>
-         </a>
-         <p class="Small_Text_Style Comment_Offset">12</p>
-
-         <a class="For_Hover" href="#" >
-            <div  class="IconShape Btn_White" >
-               <svg viewBox="0 0 24 24" >
-                  <path d="M17,4h-1H6.57C5.5,4,4.59,4.67,4.38,5.61l-1.34,6C2.77,12.85,3.82,14,5.23,14h4.23l-1.52,4.94C7.62,19.97,8.46,21,9.62,21 c0.58,0,1.14-0.24,1.52-0.65L17,14h4V4H17z M10.4,19.67C10.21,19.88,9.92,20,9.62,20c-0.26,0-0.5-0.11-0.63-0.3 c-0.07-0.1-0.15-0.26-0.09-0.47l1.52-4.94l0.4-1.29H9.46H5.23c-0.41,0-0.8-0.17-1.03-0.46c-0.12-0.15-0.25-0.4-0.18-0.72l1.34-6 C5.46,5.35,5.97,5,6.57,5H16v8.61L10.4,19.67z M20,13h-3V5h3V13z">
-               </svg>
-            </div>            
-         </a>
-         <p class="Small_Text_Style Comment_Offset">5</p>
-         <button class="Common_Btn_Style  Response_Btn" onclick="window.location.href='#' ">回覆</button>
-      </div>
-
-      <a   href="#" >
-         <div class="X_Arrange Common_Btn_Style  User_Comment_Reply">
-           <div class="Center_Arrange IconShape ">
-             <div class="D_triangle"> </div>
-           </div>
-           <p>112 則回覆</p>
-         </div>
-      </a>
-   </div>
- </div>
--->
-
-
-
-
-
-
-
-
 </div>
 
    <div class="Loading_Svg ">
@@ -556,25 +445,14 @@
 </main>
 
 
-
-
-   <div class="ss"  >
-      <h1></h1>
-
-
-   </div>
+<div    ref="related_video_mobile_flag" >
+   <related_video  ref="related_video_tag"></related_video>
+</div>
 
 
 </div>
 
-
-    <!--   console.log();   <div  >mm,mmmmmmmm. Donec enim diam vulputate ut pharetra sit amet aliquam id. Velit laoreet id donec ultrices tincidunt. Ac felis donec et odio pellentesque diam volutpat commodo sed. Amet nisl suscipit adipiscing bibendum est ultricies integer quis. Adipiscing elit pellentesque habitant morbi tristique. Et ultrices neque ornare aenean. Sagittis vitae et leo duis ut diam quam nulla porttitor. Arcu odio ut sem nulla pharetra diam sit amet. Laoreet sit amet cursus sit amet. Lobortis mattis aliquam faucibus purus in massa. Ut ornare lectus sit amet. Phasellus egestas tellus rutrum tellus pellentesque eu tincidunt. Laoreet suspendisse interdum consectetur libero. Mattis nunc sed blandit libero volutpat sed cras ornare. Amet consectetur adipiscing elit ut aliquam purus. Aliquam malesuada bibendum arcu vitae elementum curabitur vitae. Massa enim nec dui nunc mattis enim ut. Vel eros donec ac odio tempor orci dapibus ultrices. In ornare quam viverra orci sagittis eu volutpat odio. Morbi tristique senectus et netus et malesuada fames ac. Lectus urna duis convallis convallis tellus id. Sit amet risus nullam eget felis eget. Ut tristique et egestas quis ipsum. Quam nulla porttitor massa id neque aliquam vestibulum morbi blandit. Diam vel quam elementum pulvinar etiam non quam lacus. Dui vivamus arcu felis bibendum. Potenti nullam ac tortor vitae purus faucibus ornare suspendisse sed. Arcu felis bibendum ut tristique. Egestas sed sed risus pretium quam. Amet aliquam id diam maecenas. Risus nec feugiat in fermentum. Quis auctor elit sed vulputate mi sit. Habitant morbi tristique senectus et netus et. Donec et odio pellentesque diam volutpat commodo sed. Phasellus vestibulum lorem sed risus ultricies tristique nulla aliquet enim. Faucibus interdum posuere lorem ipsum dolor sit amet consectetur. Mauris ultrices eros in cursus turpis. Rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt lobortis feugiat. Turpis egestas maecenas pharetra convallis posuere morbi leo. Dis parturient montes nascetur ridiculus. A iaculis at erat pellentesque adipiscing commodo elit at. Orci phasellus egestas tellus rutrum tellus pellentesque eu. Sodales ut etiam sit amet nisl purus in mollis. Duis convallis </div> 
-   --> 
-     
-
-
-
-
+</div> 
 
 </body>
 </html>
