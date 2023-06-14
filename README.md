@@ -1,9 +1,9 @@
 **該Project為模仿YouTube影片網頁**<br/>
 使用SCSS+VUE.js
-## 展示網址:<br/>
+## 展示網址:https://voidjkk.github.io/sideproject-video-site/cp_YT_VUE_github.html<br/>
 #### 有實作的功能:
 * RWD響應式設計，有分mobile和PC版本<br/>
-* 使用debounce，上方搜尋框輸入文字約1秒之後，透過Axios抓取youtube API，回傳搜尋結果，可以點選結果再按右側進行搜尋<br/>
+* 使用debounce設計，上方搜尋框輸入文字約1秒之後，透過Axios抓取youtube API，回傳搜尋結果，可以點選結果再按右側進行搜尋<br/>
 * 在搜尋框打字時右側會出現"X"，點選可以直接刪除輸入文字<br/>
 * 側欄相關影片的資訊也是透過Axios抓取youtube API，並加以整理後的結果<br/>
 * 側欄影片滑鼠懸停後會有放大效果<br/>
