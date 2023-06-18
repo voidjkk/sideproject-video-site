@@ -1,4 +1,4 @@
-**該Project為模仿YouTube影片網頁**<br/>
+**該Project為參考YouTube影片頁面**<br/>
 使用SCSS+VUE.js
 ## 展示網址:https://voidjkk.github.io/sideproject-video-site/cp_YT_VUE_github.html<br/>
 #### 有實作的功能:
